@@ -1,0 +1,6 @@
+<div *ngIf="!authService.isSignedIn">
+    <h2>sign In</h2>
+    <input type="text" #emailSignup>
+    <input type="password" #PasswordSignup>
+    <button (click)="onSignIn(emailSignup.value,PasswordSignup.value)">Sign In </button>
+</div>
