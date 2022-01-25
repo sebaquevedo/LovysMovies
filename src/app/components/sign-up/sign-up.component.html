@@ -3,4 +3,7 @@
     <input type="text" #emailSignup>
     <input type="password" #PasswordSignup>
     <button (click)="onSignUp(emailSignup.value,PasswordSignup.value)">Sign up </button>
+    <a [routerLink]="['/sign-in']">
+      Go to Login
+    </a>
 </div>

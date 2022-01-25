@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +16,20 @@ import { HomeComponent } from './components/home/home.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { HeaderComponent } from './components/shared/header/header.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+//angular material
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatIconModule} from '@angular/material/icon';
+import {MatTableModule} from '@angular/material/table';
+import {MatSortModule } from '@angular/material/sort';
+
+//movies
+import { MovieListComponent } from './components/shared/movie-list/movie-list.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -23,7 +37,8 @@ import { HeaderComponent } from './components/shared/header/header.component';
     SignInComponent,
     SignUpComponent,
     HomeComponent,
-    HeaderComponent
+    HeaderComponent,
+    MovieListComponent
   ],
   imports: [
     BrowserModule,
@@ -31,10 +46,17 @@ import { HeaderComponent } from './components/shared/header/header.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
-
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    HttpClientModule
   ],
   providers: [FirebaseService,
               AuthService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas :[CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }

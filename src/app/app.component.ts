@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from './services/auth.service';
 
 
@@ -11,9 +12,11 @@ export class AppComponent implements OnInit{
   title = 'LovysMovies';
 
 
-constructor(public authService: AuthService){
-
-}
+  constructor(public authService: AuthService,public router: Router) {
+    if(authService.isSignedIn){
+        router.navigate(['/home']);
+    }
+  }
 
 ngOnInit(): void {
 
