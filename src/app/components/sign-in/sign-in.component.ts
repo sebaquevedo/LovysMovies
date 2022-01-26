@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/services/auth.service';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { FormBuilder,FormGroup,Validators,FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-sign-in',
@@ -7,10 +10,24 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./sign-in.component.scss']
 })
 export class SignInComponent implements OnInit {
-  constructor(public authService: AuthService) { }
-  ngOnInit(): void {
+  signInForm: FormGroup;
+  constructor(public auth:AngularFireAuth ,public router: Router, public fb:FormBuilder) {
   }
-  onSignIn(email:string, password:string){
-    this.authService.onSignIn(email,password)
+ ngOnInit(): void {
+
+ this.signInForm = this.fb.group({
+      email: new FormControl('', Validators.required),
+      password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+    });
+
+
+}
+
+    signInUser(){
+    const {email,password} = this.signInForm.value;
+    this.auth.signInWithEmailAndPassword(email,password).then(user=>{
+      this.router.navigate(['home']);
+    });
+
   }
 }

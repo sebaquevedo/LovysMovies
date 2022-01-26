@@ -1,6 +1,20 @@
-<div *ngIf="!authService.isSignedIn">
-    <h2>sign up</h2>
-    <input type="text" #emailSignup>
-    <input type="password" #PasswordSignup>
-    <button (click)="onSignUp(emailSignup.value,PasswordSignup.value)">Sign up </button>
+<div class="back">
+    <div class="center">
+        <form class="content" [formGroup]="signUpForm">
+            <span><img src="\assets\logo.svg" ></span>
+            <h2>Sign Up/Register</h2>
+            <mat-form-field class="form-control">
+                <mat-label>Email</mat-label>
+                <input matInput type="text" formControlName="email">
+            </mat-form-field>
+            <mat-form-field class="form-control">
+                <mat-label>Password</mat-label>
+                <input matInput type="password" formControlName="password">
+            </mat-form-field>
+            <div class="form footer ">
+                <button mat-button (click)="signUpUser()">Create a User</button>
+                <a routerLink="/sign-in">go to login</a>
+            </div>
+        </form>
+    </div>
 </div>

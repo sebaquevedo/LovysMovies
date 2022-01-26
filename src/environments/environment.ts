@@ -11,8 +11,13 @@ production: false,
   storageBucket: "loginlovysmovies.appspot.com",
   messagingSenderId: "598545339261",
   appId: "1:598545339261:web:49c693f768ea424b7ef214"
-  }
+  },
+themoviedb:{
+  apiKey: "0f60ad592a39d4b497a0d8889bba1be2",
+}
 };
+
+
 
 /*
  * For easier debugging in development mode, you can import the following file
