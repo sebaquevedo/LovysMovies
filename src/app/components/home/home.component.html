@@ -1,4 +1,5 @@
-<app-header>
+<app-header (isLogout)="handleLogout($event)">
 </app-header>
-<app-movie-list></app-movie-list>
-<p>you are logged in</p>
+<div class="back">
+    <app-movie-list></app-movie-list>
+</div>

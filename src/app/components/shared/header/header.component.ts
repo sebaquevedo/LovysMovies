@@ -14,8 +14,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  logout(){
-    this.firebaseService.logout()
+  onLogout(){
     this.isLogout.emit()
   }
 

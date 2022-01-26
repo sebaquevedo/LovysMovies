@@ -1,5 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FirebaseService } from 'src/app/services/firebase.service';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-home',
@@ -8,15 +10,15 @@ import { FirebaseService } from 'src/app/services/firebase.service';
 })
 export class HomeComponent implements OnInit {
   @Output() isLogout = new EventEmitter<void>()
-  constructor(public firebaseService: FirebaseService) { }
-
+  constructor(public auth:AngularFireAuth, private router: Router) { }
   ngOnInit(): void {
-
   }
-
   logout(){
-    this.firebaseService.logout()
-    this.isLogout.emit()
+    this.auth.signOut().then(()=> this.router.navigate(['sign-in']))
   }
+
+   handleLogout($event){
+    this.logout();
+   }
 
 }
